@@ -18,16 +18,18 @@ public class Customer {
    }
   
   public String statement() {
-     double totalAmount = 0;
-     int frequentRenterPoints = 0;
-     Enumeration rentals = _rentals.elements();
-     String result = "Rental Record for " + getName() + "\n";
-     while (rentals.hasMoreElements()) {
-        Rental each = (Rental) rentals.nextElement();
+      double totalAmount = 0;
+      
+      int frequentRenterPoints = 0;
+      
+      Enumeration rentals = _rentals.elements();
+      
+      String result = "Rental Record for " + getName() + "\n";
+      
+      while (rentals.hasMoreElements()) {
+         Rental each = (Rental) rentals.nextElement();
 
-
-        // add frequent renter points
-        frequentRenterPoints ++;
+         frequentRenterPoints += each.getFrequentRenterPoints();
         // add bonus for a two day new release rental
         if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
             each.getDaysRented() > 1) frequentRenterPoints ++;
